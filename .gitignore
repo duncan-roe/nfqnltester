@@ -50,3 +50,10 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Local items
+RCS
+*.scr
+cpp.qm
+shadow/
+.qrc
