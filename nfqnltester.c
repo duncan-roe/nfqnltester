@@ -16,6 +16,7 @@
 #include <linux/types.h>
 #include <libmnl/libmnl.h>
 #include <linux/netfilter.h>       /* for NF_ACCEPT */
+#include <libnfnetlink/libnfnetlink.h>
 #include <libnetfilter_queue/pktbuff.h>
 #include <linux/netfilter/nfnetlink_queue.h>
 #include <libnetfilter_queue/libnetfilter_queue.h>
