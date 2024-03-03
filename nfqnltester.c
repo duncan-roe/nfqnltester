@@ -24,7 +24,7 @@
 
 /* Macros */
 
-#define NUM_TESTS 3
+#define NUM_TESTS 4
 #define T2 0xfaceb00c
 
 /* If bool is a macro, get rid of it */
@@ -257,6 +257,7 @@ int
 main(int argc, char **argv)
 {
   struct nfq_handle *h;
+  struct nfnl_handle *nh;
   struct nfq_q_handle *qh;
   int fd;
   int rv;
@@ -318,12 +319,30 @@ main(int argc, char **argv)
   }                                /* if (tests[2] && b) */
 
   printf("opening library handle\n");
-  h = nfq_open();
-  if (!h)
+  if (tests[3])
   {
-    fprintf(stderr, "error during nfq_open()\n");
-    exit(1);
-  }                                /* if (!h) */
+    nh = nfnl_open();
+    if (!nh)
+    {
+      fprintf(stderr, "error during nfnl_open()\n");
+      exit(1);
+    }                              /* if (!nh) */
+    h = nfq_open_nfnl(nh);
+    if (!h)
+    {
+      fprintf(stderr, "error during nfq_open_nfnl()\n");
+      exit(1);
+    }                              /* if (!h) */
+  }                                /* if (tests[3]) */
+  else
+  {
+    h = nfq_open();
+    if (!h)
+    {
+      fprintf(stderr, "error during nfq_open()\n");
+      exit(1);
+    }                              /* if (!h) */
+  }                                /* if (tests[3]) else */
 
   printf("opening nlif handle\n");
   ih = nlif_open();
@@ -476,5 +495,6 @@ usage(void)
     "    2: If packet mark is not 0xfaceb00c, set it to 0xfaceb00c\n" /*  */
     "       and give verdict NF_REPEAT\n" /*  */
     "       If packet mark *is* 0xfaceb00c, accept the packet\n" /*  */
+    "    3: Call nfnl_open then call nfq_open_nfnl\n" /*  */
     );
 }                                  /* usage() */
