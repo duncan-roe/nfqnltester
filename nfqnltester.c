@@ -461,9 +461,9 @@ static void
 usage(void)
 {
 /* N.B. Trailing empty comments are there to stop gnu indent joining lines */
-  puts("\nUsage: nfqnl_test [-b <batch factor>] [-t <test #>],... " /*  */
+  puts("\nUsage: nfqnltester [-b <batch factor>] [-t <test #>],... " /*  */
     "queue_number\n"               /*  */
-    "       nfqnl_test -h\n"       /*  */
+    "       nfqnltester -h\n"       /*  */
     "  -b <n>: send a batch verdict only when packet id is a " /*  */
     "multiple of <n>.\n"           /*  */
     "          If a packet is mangled, then ack any previous " /*  */
@@ -471,7 +471,7 @@ usage(void)
     "          and send the mangled one.\n" /*  */
     "  -h: give this Help and exit\n" /*  */
     "  -t <n>: do Test <n>. Tests are:\n" /*  */
-    "    0: Exit nfqnl_test if incoming packet starts \"q[[:space:]]\"\n" /*  */
+    "    0: Exit nfqnltester if incoming packet starts \"q[[:space:]]\"\n" /* */
     "    1: Replace 1st ZXC by VBN\n" /*  */
     "    2: If packet mark is not 0xfaceb00c, set it to 0xfaceb00c\n" /*  */
     "       and give verdict NF_REPEAT\n" /*  */
