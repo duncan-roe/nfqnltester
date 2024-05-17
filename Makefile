@@ -21,10 +21,3 @@ nfqnltester7 : nfqnltester.o
 clean :
 	rm -f *.o *.d
 	find . -name "nfqnltester*" -perm 755 | xargs rm -v
-
-# Auto dependency stuff (from info make)
-%.d: %.c
-	$(CC) -MM -MT $(@:.d=.o) -MT $@ $(CPPFLAGS) $< -o $@
-ifneq ($(MAKECMDGOALS),clean)
--include $(SRCS:.c=.d)
-endif
