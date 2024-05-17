@@ -2,20 +2,19 @@
 CFLAGS += -g3 -gdwarf-4 \
   -Wall -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wstrict-prototypes \
   -Wmissing-prototypes
-nfqnltester : nfqnltester.o
+nfqnltesterN : nfqnltester.o
 	$(CC) $^ -o $@ -lnfnetlink -lmnl -lnetfilter_queue
-nfqnltester1 : nfqnltester.o
+nfqnltesterN1 : nfqnltester.o
 	$(CC) $^ -o $@ -lnfnetlink -lmnl -lnetfilter_queue
-nfqnltester2 : nfqnltester.o
+nfqnltesterN2 : nfqnltester.o
 	$(CC) $^ -o $@ -lnfnetlink -lnetfilter_queue -lmnl
-nfqnltester3 : nfqnltester.o
+nfqnltesterN3 : nfqnltester.o
 	$(CC) $^ -o $@ -lmnl -lnfnetlink -lnetfilter_queue
-nfqnltester4 : nfqnltester.o
+nfqnltesterN4 : nfqnltester.o
 	$(CC) $^ -o $@ -lmnl -lnfnetlink -lnetfilter_queue
-nfqnltester5 : nfqnltester.o
+nfqnltesterN5 : nfqnltester.o
 	$(CC) $^ -o $@ -lnetfilter_queue -lmnl -lnfnetlink
-nfqnltester6 : nfqnltester.o
+nfqnltesterN6 : nfqnltester.o
 	$(CC) $^ -o $@ -lnetfilter_queue -lnfnetlink -lmnl
 clean :
-	rm -f *.o *.d
-	find . -name "nfqnltester*" -perm 755 | xargs rm -v
+	rm -f *.o nfqnltesterN*
